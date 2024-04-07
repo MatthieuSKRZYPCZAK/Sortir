@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une sortie - {{ parent() }}{% endblock %}
+
+
+{% block body %}
+    <h1 class="text-center pb-5">Créer une sortie</h1>
+    {% for label, messages in app.flashes(['success', 'danger']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% include 'event/_form.html.twig' with {form: form, formLocation: formLocation} only %}
+
+{% endblock %}

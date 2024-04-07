@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Accueil
+{% endblock %}
+
+{% block header %}
+    <div class="container-fluid ">
+        <nav class="navbar navbar-light">
+            {{ parent() }}
+            {% include("inc/_nav.html.twig") %}
+        </nav>
+    </div>
+{% endblock %}

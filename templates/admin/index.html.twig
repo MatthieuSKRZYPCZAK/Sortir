@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center mb-5">Page d'Administration</h1>
+
+    <div class="d-flex justify-content-center flex-nowrap">
+        <a href="{{ path('app_admin_show') }}" class="btn btn-primary mx-auto">Gérer les utilisateurs</a>
+
+        <a href="{{ path('app_city_show') }}" class="btn btn-primary mx-auto">Gérer les villes</a>
+
+        <a href="{{ path('app_campus_show') }}" class="btn btn-primary mx-auto">Gérer les campus</a>
+    </div>
+
+{% endblock %}

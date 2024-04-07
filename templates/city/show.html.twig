@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des villes - {{ parent() }}{% endblock %}
+
+{% block body %}
+    {% for label, messages in app.flashes(['success', 'danger']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <h1 class="text-center mb-5">Gérer les villes</h1>
+
+    {# TODO : à dynamiser !! #}
+    <form class="mb-5">
+        <h3 class="mb-3">Filtrer les villes</h3>
+        <label>Le nom contient : </label>
+        <input type="text" placeholder="Rechercher">
+        <bouton class="btn btn-primary">Rechercher</bouton>
+    </form>
+    {{ form_start(form) }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Code Postal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ form_widget(form.name) }}</td>
+            <td>{{ form_widget(form.zipcode) }}</td>
+            <td><button type="submit" class="btn">
+                    <img src="{{ asset('img/icon/add.png') }}" width="25px" title="Ajouter une ville">
+                </button></td>
+        </tr>
+        {% for city in cities %}
+            <tr>
+                <td>{{ city.name }}</td>
+                <td>{{ city.zipcode }}</td>
+                <td>
+                    {# TODO : redirection à faire #}
+                    <a href="{{ path('app_city_delete', {'id': city.id}) }}"><img src="{{ asset('img/icon/delete.png') }}" width="25px" title="Modifier la ville"></a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    {{ form_end(form) }}
+    {{ include('inc/_backBtn.html.twig') }}
+
+
+{% endblock %}
